@@ -1,0 +1,7 @@
+<h2>New Ingredient & Doses</h2>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.input :description %>
+  <%= f.association :ingredient, collection: Ingredient.ordered %>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

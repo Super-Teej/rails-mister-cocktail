@@ -1,0 +1,30 @@
+<h2> <%= @cocktail.name %> </h2>
+
+<% if notice.present? %>
+  <div class="alert alert-success">
+    <%= notice %>
+  </div>
+<% end %>
+
+<h3> Ingredients: </h3>
+
+<% if @cocktail.doses.any? %>
+
+    <ul>
+      <% @cocktail.doses.each do |dose| %>
+      <li><%= dose.description %> <%=dose.ingredient.name %> </li>
+      <% end %>
+    </ul>
+<% else %>
+    <p>
+      No ingredients added to please use the button below to add ingredients.
+    </p>
+<% end %>
+
+<%= link_to new_cocktail_doses_path(@cocktail), class: 'btn btn-small btn-outline-secondary' do %>
+  <i class="fa fa-plus"></i>Add ingredient
+<% end  %>
+
+<%= link_to cocktails_path do %>
+  &larr; Back
+<% end %>
